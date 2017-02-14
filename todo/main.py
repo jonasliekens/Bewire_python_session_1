@@ -21,6 +21,8 @@ def execute():
 
     if args.c is not None:
         complete_todo(args.c)
-
-    todo_list = [[values for values in todos.values()] for todos in get_all()]
+#   This one will get all the values from the dict, but it is not always in the same order ;)
+#   todo_list = [[values for values in todos.values()] for todos in get_all()]
+#   This one does it the right way ;)
+    todo_list = [[todos['completed'], todos['description']] for todos in get_all()]
     print(tabulate(todo_list, headers=['ID', 'Completed', 'Description'], showindex="always"))
